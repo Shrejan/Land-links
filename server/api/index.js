@@ -1,9 +1,10 @@
+import serverless from 'serverless-http';
 import express from "express";
 import cors from "cors";
 import connectDB from "./db.js";
-import Post from "./modles/Post.js";
+import Post from "../modles/Post.js";
 import Account_creation from "./ac_creation.js";
-import User from "./modles/Accounts.js"
+import User from "../modles/Accounts.js"
 
 const app = express();
 const port = 5000;
@@ -20,14 +21,18 @@ app.use("/ac_creation/api/accounts",Account_creation);
 app.post("/api/data", async (req, res) => {
   
   
-  try {  const user = await User.findOne({ userId: req.body.user_id});
-  if (!user) return res.status(404).send("User not found");
+  try {  /*const user = await User.findOne({userId: req.body.user_id});
+  if (!user) return res.status(404).send("User not found");*/
+  console.log("Received request body:", req.body);
+const user = await User.findOne({ userId : req.body._id });
+console.log("User found:", user);
+if (!user) return res.status(404).send("User not found");
+
     const newPost = new Post({
-      userId: user._id,
+      userId: user,
       full_name: req.body.name,
       contact1: req.body.contact1,
       contact2: req.body.contact2,
-      email: req.body.email,
       main_loca: req.body.mainLocation,
       exact_loca: req.body.exactLocation,
       price: req.body.price,
@@ -52,3 +57,4 @@ app.get("/api/pos", async (req, res) => {
   }
 });
 app.listen(port, () => console.log(`Server running on port ${port}`))
+export default serverless(app);

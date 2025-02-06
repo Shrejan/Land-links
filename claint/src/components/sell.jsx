@@ -14,6 +14,7 @@ const SellPage = () => {
     name: "",
     contact1: "",
     contact2: "",
+    user_id: "",
     
   });
 
