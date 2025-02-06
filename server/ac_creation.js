@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import connectDB from "../db.js";
-import User from "../../modles/Accounts.js";
+import connectDB from "./db.js";
+import User from "./modles/Accounts.js";
 const Account_creation = express.Router();
 
 Account_creation.use(cors());

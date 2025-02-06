@@ -2,9 +2,9 @@ import serverless from 'serverless-http';
 import express from "express";
 import cors from "cors";
 import connectDB from "./db.js";
-import Post from "../modles/Post.js";
+import Post from "./modles/Post.js";
 import Account_creation from "./ac_creation.js";
-import User from "../modles/Accounts.js"
+import User from "./modles/Accounts.js"
 
 const app = express();
 const port = 5000;
