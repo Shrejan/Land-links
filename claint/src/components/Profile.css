@@ -1,0 +1,253 @@
+/* ProfilePage.css */
+.profile-container {
+  width: 85vw;
+  margin: 70px 5vw 55px 5vw;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #3498db;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+  margin: 0.5rem 0;
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.profile-bio {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.stat-label {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.content-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tab-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  background: #ecf0f1;
+  color: #7f8c8d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: #3498db;
+  color: white;
+  box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.product-info h3 {
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+}
+
+.product-info p {
+  color: #27ae60;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.available {
+  background: #27ae6020;
+  color: #27ae60;
+}
+
+.status-badge.sold {
+  background: #e74c3c20;
+  color: #e74c3c;
+}
+
+.notifications-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.notification-item {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.notification-item.unread {
+  background: #3498db10;
+  border-left: 4px solid #3498db;
+}
+
+.notification-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.mark-read {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+}
+
+.mark-read:hover {
+  text-decoration: underline;
+}
+
+.floating-action-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 70px;
+  margin-bottom: 80px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 0px 0px 9px 0px;
+  background: #3498db;
+  color: white;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.floating-action-btn:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .profile-stats {
+    gap: 1.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .floating-action-btn {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    padding: 0px 0px 3px 0px;
+    height: 50px;
+    font-size: 1.5rem;
+    
+  }
+}
