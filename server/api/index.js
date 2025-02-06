@@ -9,20 +9,21 @@ import User from "../modles/Accounts.js"
 const app = express();
 const port = 5000;
 
-app.use(cors());
-app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://land-links.vercel.app'); // Or '*' for development
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Max-Age', '86400');
 
-  if (req.method === 'OPTIONS') {
-      res.status(200).end(); // Respond to preflight requests
-  } else {
-      next(); // Continue to the actual route handler
-  }
-});
+app.use(express.json());
+const allowedOrigins = ['https://land-links.vercel.app'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 connectDB(); //mongodb connection
 
 app.use("https://land-links-backend.vercel.app//ac_creation/api/accounts",Account_creation);
