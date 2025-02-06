@@ -10,20 +10,18 @@ const app = express();
 const port = 5000;
 
 
-app.use(express.json());
-const allowedOrigins = ['https://land-links.vercel.app'];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+const corsOptions = {
+  origin: "https://land-links.vercel.app", // Set this to your frontend URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // If you're using cookies or sessions
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+app.use(express.json());
+
 connectDB(); //mongodb connection
 
 app.use("https://land-links-backend.vercel.app//ac_creation/api/accounts",Account_creation);
