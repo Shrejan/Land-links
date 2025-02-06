@@ -14,11 +14,11 @@ app.use(express.json());
 
 connectDB(); //mongodb connection
 
-app.use("/ac_creation/api/accounts",Account_creation);
+app.use("https://land-links-backend.vercel.app//ac_creation/api/accounts",Account_creation);
 
 
 
-app.post("/api/data", async (req, res) => {
+app.post("https://land-links-backend.vercel.app/api/data", async (req, res) => {
   
   
   try {  /*const user = await User.findOne({userId: req.body.user_id});
