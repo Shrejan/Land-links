@@ -11,20 +11,14 @@ const port = 5000;
 
 
 
-const corsOptions = {
-  origin: "https://land-links.vercel.app", // Set this to your frontend URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // If you're using cookies or sessions
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(cors({ origin: "*", methods: "GET,POST,PUT,DELETE" }));
+
 app.use(express.json());
 
 connectDB(); //mongodb connection
 
-app.use("https://land-links-backend.vercel.app//ac_creation/api/accounts",Account_creation);
+app.use("https://land-links-backend.vercel.app/ac_creation/api/accounts",Account_creation);
 
 
 
