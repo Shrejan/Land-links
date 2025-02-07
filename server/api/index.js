@@ -1,4 +1,4 @@
-import serverless from "serverless-http";
+/*import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
 import connectDB from "../api/db.js";
@@ -28,8 +28,7 @@ app.use("/ac_creation/api/accounts", Account_creation);
 
 app.post("/api/data", async (req, res) => {
   try {
-    /*const user = await User.findOne({userId: req.body.user_id});
-  if (!user) return res.status(404).send("User not found");*/
+    
     console.log("Received request body:", req.body);
     const user = await User.findOne({ userId: req.body._id });
     console.log("User found:", user);
@@ -64,4 +63,15 @@ app.get("/api/post", async (req, res) => {
   }
 });
 
+export default serverless(app);*/
+import serverless from "serverless-http";
+import express from "express";
+
+const app = express();
+
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API is working!" });
+});
+
 export default serverless(app);
+
