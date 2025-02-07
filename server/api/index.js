@@ -1,9 +1,9 @@
 import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
-import connectDB from "./db.js";
+import connectDB from "../api/db.js";
 import Post from "../models/Post.js";
-import Account_creation from "./ac_creation.js";
+import Account_creation from "../api/routes/ac_creation.js";
 import User from "../models/Accounts.js";
 
 const app = express();
@@ -24,6 +24,7 @@ app.use(express.json());
 connectDB(); //mongodb connection
 
 app.use("/ac_creation/api/accounts", Account_creation);
+
 
 app.post("/api/data", async (req, res) => {
   try {
