@@ -1,4 +1,4 @@
-/*import serverless from "serverless-http";
+import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
 import connectDB from "../api/db.js";
@@ -8,7 +8,7 @@ import User from "../models/Accounts.js";
 
 const app = express();
 
-const allowedOrigins = ["https://land-links.vercel.app"];
+const allowedOrigins = ["https://land-links.vercel.app/sell"];
 
 app.use(cors({
   origin: allowedOrigins,  // Allow only the frontend URL
@@ -63,15 +63,6 @@ app.get("/api/post", async (req, res) => {
   }
 });
 
-export default serverless(app);*/
-import serverless from "serverless-http";
-import express from "express";
-
-const app = express();
-
-app.get("/api/test", (req, res) => {
-  res.json({ message: "API is working!" });
-});
-
 export default serverless(app);
+
 
