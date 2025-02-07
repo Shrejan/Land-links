@@ -58,14 +58,7 @@ app.post("/api/data", async (req, res) => {
   }
 });
 
-app.get("/api/post", async (req, res) => {
-  try {
-    const laddlink_data = await Post.find();
-    res.json(laddlink_data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+
 
 export default serverless(app);
 
