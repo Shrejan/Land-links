@@ -64,7 +64,8 @@ const SellPage = () => {
       alert("Data submitted successfully!");
       window.location.reload();
     } catch (error) {
-      console.error("Errrrrrrrror:", error.response?.data || error.message);
+      console.error("Errrrrrrrror:", error.response?.data );
+      console.error("eeeeeeeeeror:", error.message);
       // Handle error
     }
   };
