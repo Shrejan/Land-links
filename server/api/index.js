@@ -26,10 +26,10 @@ app.options('*', cors());
 
 app.use(express.json());
 
-
+console.log("Request 1received");
 
 // ✅ Fix: Ensure MongoDB connectio
-await connectDB()
+ connectDB()
 
 
 
@@ -39,6 +39,7 @@ app.use("/ac_creation/api/accounts", Account_creation);
 
 // ✅ Fix: Correct User lookup and Post creation
 app.post("/api/data", async (req, res) => {
+  console.log("Request 2received");
   try {
     /*console.log("Received request body:", req.body);
 
@@ -63,7 +64,7 @@ app.post("/api/data", async (req, res) => {
       // images: req.body.images, // Uncomment if needed
       g_map_url: req.body.mapLocation,
     });
-
+    console.log("Request3 received");
     const savedPost = await newPost.save();
     res.status(201).json(savedPost);
     console.log("done")
@@ -71,7 +72,7 @@ app.post("/api/data", async (req, res) => {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
   }
-});
+}); console.log("Request 4received");
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
