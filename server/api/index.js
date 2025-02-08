@@ -9,18 +9,6 @@ import User from "../models/Accounts.js";
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['https://land-links.vercel.app'];
-            app.use(cors({
-                origin: (origin, callback) => {
-                    if (allowedOrigins.includes(origin) || !origin) {
-                        callback(null, true);
-                    } else {
-                        callback(new Error('Not allowed by CORS'));
-                    }
-                }
-            }));
-
-
 connectDB(); //mongodb connection
 
 app.use("/ac_creation/api/accounts", Account_creation);
