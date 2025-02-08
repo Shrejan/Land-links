@@ -56,11 +56,7 @@ const SellPage = () => {
       const response = await axios.post(
         "https://land-links-backend.vercel.app/api/data",
         formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        
       );
       alert("Data submitted successfully!");
       window.location.reload();
