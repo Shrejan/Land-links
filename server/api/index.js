@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
-import connectDB from "./db.js";
+import connectDB from "../api/db.js";
 import Post from "../models/Post.js";
 import Account_creation from "./routes/ac_creation.js";
 import User from "../models/Accounts.js";
-import dotenv from 'dotenv';dotenv.config();
+
 
 const app = express();
 
@@ -26,25 +26,13 @@ app.options('*', cors());
 
 app.use(express.json());
 
-/*const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('MongoDB connected');
-  } catch (error) {
-    console.error('Connection error:', error.message);
-    process.exit(1);
-  }
-};*/
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
 
-// ✅ Fix: Ensure MongoDB connection
 
-/*connectDB()
-.then(() => console.log('MongooooooDB connected'))
-.catch((err) => console.error('MongooooooooDB connection error:', err));
-*/
+// ✅ Fix: Ensure MongoDB connectio
+connectDB()
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.error('MongoDB connection error:', err));
+
 
 
 // Account creation route
