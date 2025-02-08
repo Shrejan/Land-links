@@ -58,7 +58,7 @@ const SellPage = () => {
         "https://land-links-backend.vercel.app/api/data",
         formData,
         {
-         headers: {'Content-Length': data.length,
+         headers: {
     'Content-Type': 'application/json',
     
   }
