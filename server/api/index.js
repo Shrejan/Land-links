@@ -27,6 +27,10 @@ app.options('*', cors());
 //app.use(express.json());
 
 console.log("Request 1received");
+app.use((req, res, next) => {
+  console.log('Incoming headers:', req.headers);
+  next();
+});
 
 
     // Ensure the database is connected (only connects if not already connected)
