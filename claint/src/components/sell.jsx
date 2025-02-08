@@ -58,7 +58,10 @@ const SellPage = () => {
         "https://land-links-backend.vercel.app/api/data",
         formData,
         {
-          headers: { "Content-Type": "application/json" },
+         headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
         }
       );
       alert("Data submitted successfully!");
