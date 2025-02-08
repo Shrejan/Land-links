@@ -38,7 +38,7 @@ await connectDB()
 app.use("/ac_creation/api/accounts", Account_creation);
 
 // ✅ Fix: Correct User lookup and Post creation
-app.post("/api/data", async (req, res) => {
+app.post("/api/data", async (req, res) => {console.time("request-time");
   try {
     /*console.log("Received request body:", req.body);
 
@@ -70,7 +70,7 @@ app.post("/api/data", async (req, res) => {
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
-  }
+  }console.timeEnd("request-time");
 });
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
