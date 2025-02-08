@@ -38,8 +38,12 @@ console.log("Request 1received");
 app.use("/ac_creation/api/accounts", Account_creation);
 
 // ✅ Fix: Correct User lookup and Post creation
+<<<<<<< HEAD
 app.post("/api/data", async (req, res) => {
   console.log("Request 2received");
+=======
+app.post("/api/data", async (req, res) => {console.time("request-time");
+>>>>>>> a97ab727c4d43dac4bef1b25b3f5e20bb0b7f5e4
   try {
     /*console.log("Received request body:", req.body);
 
@@ -71,8 +75,13 @@ app.post("/api/data", async (req, res) => {
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
+<<<<<<< HEAD
   }
 }); console.log("Request 4received");
+=======
+  }console.timeEnd("request-time");
+});
+>>>>>>> a97ab727c4d43dac4bef1b25b3f5e20bb0b7f5e4
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
