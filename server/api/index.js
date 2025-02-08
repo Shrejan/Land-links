@@ -89,7 +89,7 @@ app.post("/api/data", async (req, res) => {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
   }
-}); console.log("Request 4received");
+}); console.log("Requessssssssssssst 4received");
 /*const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
