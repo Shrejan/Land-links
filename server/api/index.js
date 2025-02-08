@@ -24,47 +24,16 @@ app.use(cors({
 // Handle preflight requests
 app.options('*', cors());
 
-//app.use(express.json());
-
-console.log("Request 1received");
-app.use((req, res, next) => {
-  let chunks = [];
-  req.on('data', (chunk) => {
-    chunks.push(chunk);
-  });
-  req.on('end', () => {
-    const rawBody = Buffer.concat(chunks);
-    console.log("Actual raw body length:", rawBody.length);
-    // You can attach this raw body to the request if needed:
-    req.rawBody = rawBody.toString();
-    next();
-  });
-});
-
-app.use(express.json({
-  verify: (req, res, buf) => {
-    console.log("Raw body length:", buf.length); // Log the actual length
-    req.rawBody = buf.toString();
-  },
-  limit: '50mb',
-  inflate: true,
-}));
-
+app.use(express.json());
 
     // Ensure the database is connected (only connects if not already connected)
  connectDB()
     
 // Add this before your routes
-app.use(express.json({
+/*app.use(express.json({
   limit: '50mb',
   inflate: true,
-}));
-
-app.use(express.urlencoded({
-  extended: true,
-  limit: '50mb',
-  parameterLimit: 100000
-}));
+}));*/
 
 
 // Account creation route
@@ -107,9 +76,9 @@ app.post("/api/data", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }); console.log("Request 4received");
-const port = process.env.PORT || 5000;
+/*const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-});
+});*/
 
 export default serverless(app)
