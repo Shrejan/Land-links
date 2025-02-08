@@ -8,27 +8,22 @@ import User from "../models/Accounts.js";
 
 const app = express();
 
-// ✅ Fix: Proper CORS handling
+
+
+// Configure CORS properly
 app.use(cors({
-  origin: 'https://land-links.vercel.app', // Replace with frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: 'https://land-links.vercel.app',
+  methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.use(express.json());
 
-// ✅ Fix: Handle OPTIONS requests
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://land-links.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(204); // No Content
-  }
-
-  next();
-});
 
 // ✅ Fix: Ensure MongoDB connection
 connectDB();
