@@ -31,6 +31,14 @@ app.use((req, res, next) => {
   console.log('Incoming headers:', req.headers);
   next();
 });
+app.use(express.json({
+  verify: (req, res, buf) => {
+    console.log("Raw body length:", buf.length); // Log the actual length
+    req.rawBody = buf.toString();
+  },
+  limit: '50mb',
+  inflate: true,
+}));
 
 
     // Ensure the database is connected (only connects if not already connected)
