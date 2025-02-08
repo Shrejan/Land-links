@@ -7,7 +7,7 @@ const Account_creation = express.Router();
 Account_creation.use(cors());
 Account_creation.use(express.json());
 
-connectDB();
+ await connectDB();
 
 
 Account_creation.post("/", async (req, res) => {

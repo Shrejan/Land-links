@@ -29,9 +29,8 @@ app.use(express.json());
 
 
 // ✅ Fix: Ensure MongoDB connectio
-connectDB()
-.then(() => console.log('MongoDB connected'))
-.catch((err) => console.error('MongoDB connection error:', err));
+await connectDB()
+
 
 
 
@@ -67,11 +66,15 @@ app.post("/api/data", async (req, res) => {
 
     const savedPost = await newPost.save();
     res.status(201).json(savedPost);
+    console.log("done")
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
   }
 });
-
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 export default serverless(app);
