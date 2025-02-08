@@ -8,7 +8,7 @@ import User from "../models/Accounts.js";
 
 const app = express();
 
-const allowedOrigins = ["https://land-links.vercel.app/sell"];
+const allowedOrigins = ["https://land-links.vercel.app"];
 
 app.use(cors({
   origin: allowedOrigins,  // Allow only the frontend URL
