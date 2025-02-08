@@ -15,7 +15,6 @@ const SellPage = () => {
     contact1: "",
     contact2: "",
     user_id: "",
-    
   });
 
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -58,17 +57,16 @@ const SellPage = () => {
         "https://land-links-backend.vercel.app/api/data",
         formData,
         {
-         headers: {
-    'Content-Type': 'application/json',
-    
-  }
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       alert("Data submitted successfully!");
       window.location.reload();
     } catch (error) {
       console.error("Errrrrrrrror:", error.response?.data || error.message);
-     
+
       // Handle error
     }
   };
