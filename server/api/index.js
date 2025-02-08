@@ -35,14 +35,23 @@ app.use(express.json({ limit: '10mb' }));
   inflate: true,
 }));*/
 app.use((req, res, next) => {
-  console.log('Headers:', req.headers);
-  // Optionally, log the raw body if you capture it with a custom middleware (use caution)
-  next();
+  let rawData = '';
+  req.on('data', (chunk) => {
+    rawData += chunk;
+  });
+  req.on('end', () => {
+    console.log("Raw Data Length:", Buffer.byteLength(rawData));
+    console.log("Content-Length Header:", req.headers['content-length']);
+    // Optionally, attach rawData to req for further processing
+    req.rawBody = rawData;
+    next();
+  });
 });
 
 
+
 // Account creation route
-app.use("/ac_creation/api/accounts", Account_creation);
+//app.use("/ac_creation/api/accounts", Account_creation);
 
 // ✅ Fix: Correct User lookup and Post creation
 app.post("/api/data", async (req, res) => {
