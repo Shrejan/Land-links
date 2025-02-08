@@ -7,70 +7,61 @@ import Post from "../models/Post.js";
 import Account_creation from "./routes/ac_creation.js";
 import User from "../models/Accounts.js";
 
-
 const app = express();
-
 
 const allowedOrigins = ["https://land-links.vercel.app"];
 
 // Configure CORS properly
 app.use(cors({
-  origin: 'https://land-links.vercel.app',
+  origin: allowedOrigins,
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
-  //allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
 // Handle preflight requests
 app.options('*', cors());
 
-app.use(express.json({ limit: '10mb' }));
-
-    // Ensure the database is connected (only connects if not already connected)
- connectDB()
-    
-// Add this before your routes
-/*app.use(express.json({
-  limit: '50mb',
-  inflate: true,
-}));*/
+// Middleware to handle raw body
 app.use((req, res, next) => {
-  let rawData = '';
+  let chunks = [];
   req.on('data', (chunk) => {
-    rawData += chunk;
+    chunks.push(chunk);
   });
   req.on('end', () => {
-    console.log("Raw Data Length:", Buffer.byteLength(rawData));
-    console.log("Content-Length Header:", req.headers['content-length']);
-    // Optionally, attach rawData to req for further processing
-    req.rawBody = rawData;
+    const rawBody = Buffer.concat(chunks);
+    req.rawBody = rawBody.toString();
     next();
   });
 });
 
+// Ensure the database is connected (only connects if not already connected)
+connectDB();
 
+// Middleware to parse JSON bodies
+app.use(express.json({
+  verify: (req, res, buf) => {
+    req.rawBody = buf.toString();
+  },
+  limit: '50mb',
+  inflate: true,
+}));
+
+app.use(express.urlencoded({
+  extended: true,
+  limit: '50mb',
+  parameterLimit: 100000
+}));
 
 // Account creation route
-//app.use("/ac_creation/api/accounts", Account_creation);
+app.use("/ac_creation/api/accounts", Account_creation);
 
-// ✅ Fix: Correct User lookup and Post creation
+// Route to handle data
 app.post("/api/data", async (req, res) => {
-  console.log("Request 2received");
+  console.log("Request received");
 
   try {
-    /*console.log("Received request body:", req.body);
-
-    // Correct lookup using _id instead of userId
-    const user = await User.findOne({ _id: req.body._id });
-    console.log("User found:", user);
-
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }*/
-
-    // Create and save new post
     const newPost = new Post({
-     /* userId: user._id,*/ // Fix: Store only the user ID
       full_name: req.body.name,
       contact1: req.body.contact1,
       contact2: req.body.contact2,
@@ -78,21 +69,20 @@ app.post("/api/data", async (req, res) => {
       exact_loca: req.body.exactLocation,
       price: req.body.price,
       discription: req.body.description,
-      // images: req.body.images, // Uncomment if needed
       g_map_url: req.body.mapLocation,
     });
-    console.log("Request3 received");
     const savedPost = await newPost.save();
     res.status(201).json(savedPost);
-    console.log("done")
+    console.log("Data saved successfully");
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
   }
-}); console.log("Requessssssssssssst 4received");
-/*const port = process.env.PORT || 5000;
+});
+
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-});*/
+});
 
-export default serverless(app)
+export default serverless(app);
