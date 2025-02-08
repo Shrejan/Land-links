@@ -1,10 +1,11 @@
 import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
-import connectDB from "../api/db.js";
+import connectDB from "../db.js";
 import Post from "../models/Post.js";
-import Account_creation from "../api/routes/ac_creation.js";
+import Account_creation from "../routes/ac_creation.js";
 import User from "../models/Accounts.js";
+
 
 const app = express();
 
