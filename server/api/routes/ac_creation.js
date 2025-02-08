@@ -9,6 +9,7 @@ Account_creation.use(express.json());
 
 connectDB();
 
+
 Account_creation.post("/", async (req, res) => {
   try {
     const newUser = new User({
