@@ -55,7 +55,7 @@ const SellPage = () => {
     try {
       const response = await axios.post(
         "https://land-links-backend.vercel.app/api/data",
-        formData,
+        JSON.stringify(formData),
         
       );
       alert("Data submitted successfully!");
