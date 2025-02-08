@@ -28,9 +28,10 @@ app.use(express.json());
 
 console.log("Request 1received");
 
-// ✅ Fix: Ensure MongoDB connectio
- connectDB()
 
+    // Ensure the database is connected (only connects if not already connected)
+ connectDB()
+    
 // Add this before your routes
 app.use(express.json({
   verify: (req, res, buf) => {
@@ -45,10 +46,7 @@ app.use(express.urlencoded({
   parameterLimit: 100000
 }));
 
-app.use((req, res, next) => {
-  req.headers['content-length'] = Buffer.byteLength(req.rawBody || '');
-  next();
-});
+
 // Account creation route
 app.use("/ac_creation/api/accounts", Account_creation);
 
@@ -94,4 +92,4 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-export default serverless(app);
+export default serverless(app)
