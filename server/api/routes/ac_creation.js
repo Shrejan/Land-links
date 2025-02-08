@@ -6,16 +6,7 @@ const Account_creation = express.Router();
 
 Account_creation.use(cors());
 Account_creation.use(express.json());
-async(req, res)=> {
-  try {
-    // Ensure the database is connected (only connects if not already connected)
-    await connectDB()
-    res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Error connecting to database:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-}
+connectDB()
 
 
 Account_creation.post("/", async (req, res) => {
