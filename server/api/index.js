@@ -24,7 +24,7 @@ app.use(cors({
 // Handle preflight requests
 app.options('*', cors());
 
-app.use(express.json());
+//app.use(express.json());
 
 console.log("Request 1received");
 
@@ -35,9 +35,10 @@ console.log("Request 1received");
 // Add this before your routes
 app.use(express.json({
   verify: (req, res, buf) => {
+    console.log('Received raw body length:', buf.length);
     req.rawBody = buf.toString();
   },
-  limit: '50mb' // Match your needs
+  limit: '50mb'
 }));
 
 app.use(express.urlencoded({
