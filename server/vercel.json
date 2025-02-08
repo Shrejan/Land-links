@@ -9,7 +9,11 @@
   "routes": [
     {
   "src": "/api/(.*)",
-      "dest": "api/index.js" 
+      "dest": "api/index.js",
+      "methods": ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+      "headers": {
+        "Content-Type": "application/json"
+      } 
 }
     
   ]

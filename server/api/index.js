@@ -31,15 +31,31 @@ console.log("Request 1received");
 // ✅ Fix: Ensure MongoDB connectio
  connectDB()
 
+// Add this before your routes
+app.use(express.json({
+  verify: (req, res, buf) => {
+    req.rawBody = buf.toString();
+  },
+  limit: '50mb' // Match your needs
+}));
 
+app.use(express.urlencoded({
+  extended: true,
+  limit: '50mb',
+  parameterLimit: 100000
+}));
 
-
+app.use((req, res, next) => {
+  req.headers['content-length'] = Buffer.byteLength(req.rawBody || '');
+  next();
+});
 // Account creation route
 app.use("/ac_creation/api/accounts", Account_creation);
 
 // ✅ Fix: Correct User lookup and Post creation
 app.post("/api/data", async (req, res) => {
   console.log("Request 2received");
+
   try {
     /*console.log("Received request body:", req.body);
 
