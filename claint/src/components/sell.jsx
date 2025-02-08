@@ -60,7 +60,7 @@ const SellPage = () => {
         {
          headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    
   }
         }
       );
