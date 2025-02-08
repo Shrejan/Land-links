@@ -28,9 +28,19 @@ app.options('*', cors());
 
 console.log("Request 1received");
 app.use((req, res, next) => {
-  console.log('Incoming headers:', req.headers);
-  next();
+  let chunks = [];
+  req.on('data', (chunk) => {
+    chunks.push(chunk);
+  });
+  req.on('end', () => {
+    const rawBody = Buffer.concat(chunks);
+    console.log("Actual raw body length:", rawBody.length);
+    // You can attach this raw body to the request if needed:
+    req.rawBody = rawBody.toString();
+    next();
+  });
 });
+
 app.use(express.json({
   verify: (req, res, buf) => {
     console.log("Raw body length:", buf.length); // Log the actual length
