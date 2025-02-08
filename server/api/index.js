@@ -26,7 +26,7 @@ app.options('*', cors());
 
 app.use(express.json());
 
-const connectDB = async () => {
+/*const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB connected');
@@ -34,15 +34,17 @@ const connectDB = async () => {
     console.error('Connection error:', error.message);
     process.exit(1);
   }
-};
-
+};*/
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // ✅ Fix: Ensure MongoDB connection
 
-connectDB()
+/*connectDB()
 .then(() => console.log('MongooooooDB connected'))
 .catch((err) => console.error('MongooooooooDB connection error:', err));
-
+*/
 
 
 // Account creation route

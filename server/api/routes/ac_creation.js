@@ -1,4 +1,6 @@
 import express from "express";
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';dotenv.config();
 import cors from "cors";
 import connectDB from "../db.js";
 import User from "../../models/Accounts.js";
@@ -7,7 +9,10 @@ const Account_creation = express.Router();
 Account_creation.use(cors());
 Account_creation.use(express.json());
 
-connectDB();
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
+
 
 Account_creation.post("/", async (req, res) => {
   try {
