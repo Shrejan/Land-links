@@ -34,11 +34,8 @@ console.log("Request 1received");
     
 // Add this before your routes
 app.use(express.json({
-  verify: (req, res, buf) => {
-    console.log('Received raw body length:', buf.length);
-    req.rawBody = buf.toString();
-  },
-  limit: '50mb'
+  limit: '50mb',
+  inflate: true,
 }));
 
 app.use(express.urlencoded({
