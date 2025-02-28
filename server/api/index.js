@@ -20,10 +20,10 @@ app.use(cors({
 }));
 
 // Handle preflight requests
-app.options('*', cors());
+//app.options('*', cors());
 
 // Middleware to handle raw body
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   let chunks = [];
   req.on('data', (chunk) => {
     chunks.push(chunk);
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
     req.rawBody = rawBody.toString();
     next();
   });
-});
+});*/
 
 // Ensure the database is connected (only connects if not already connected)
 connectDB();
@@ -47,12 +47,12 @@ app.use(express.json({
   inflate: true,
 }));
 
-app.use(express.urlencoded({
+/*app.use(express.urlencoded({
   extended: true,
   limit: '50mb',
   parameterLimit: 100000
 }));
-
+*/
 // Account creation route
 app.use("/ac_creation/api/accounts", Account_creation);
 
@@ -80,9 +80,9 @@ app.post("/api/data", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5000;
+/*const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-});
+});*/
 
 export default serverless(app);
