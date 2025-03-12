@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import serverless from "serverless-http";
-import express from "express";
-import cors from "cors";
+import express from ("express");
+import cors from ("cors");
 import connectDB from "../api/db.js";
 import Post from "../models/Post.js";
 import Account_creation from "./routes/ac_creation.js";
@@ -19,24 +19,7 @@ app.use(cors({
   credentials: true
 }));
 
-// Handle preflight requests
-//app.options('*', cors());
-
-// Middleware to handle raw body
-/*app.use((req, res, next) => {
-  let chunks = [];
-  req.on('data', (chunk) => {
-    chunks.push(chunk);
-  });
-  req.on('end', () => {
-    const rawBody = Buffer.concat(chunks);
-    req.rawBody = rawBody.toString();
-    next();
-  });
-});*/
-
-// Ensure the database is connected (only connects if not already connected)
-connectDB();
+//connectDB();
 
 // Middleware to parse JSON bodies
 app.use(express.json({
@@ -47,14 +30,9 @@ app.use(express.json({
   inflate: true,
 }));
 
-/*app.use(express.urlencoded({
-  extended: true,
-  limit: '50mb',
-  parameterLimit: 100000
-}));
-*/
+
 // Account creation route
-app.use("/ac_creation/api/accounts", Account_creation);
+//app.use("/ac_creation/api/accounts", Account_creation);
 
 // Route to handle data
 app.post("/api/data", async (req, res) => {

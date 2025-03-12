@@ -1,4 +1,4 @@
-import mongoose from'mongoose';
+/*import mongoose from'mongoose';
 import dotenv from 'dotenv';dotenv.config();
  console.log("Request hghgvgreceived");
 const connectDB = async () => {
@@ -12,3 +12,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+*/
