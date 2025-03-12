@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import serverless from "serverless-http";
-import express from ("express");
-import cors from ("cors");
+import express from "express";
+import cors from "cors";
 import connectDB from "../api/db.js";
 import Post from "../models/Post.js";
 import Account_creation from "./routes/ac_creation.js";
@@ -49,8 +49,8 @@ app.post("/api/data", async (req, res) => {
       discription: req.body.description,
       g_map_url: req.body.mapLocation,
     });
-    const savedPost = await newPost.save();
-    res.status(201).json(savedPost);
+    //const savedPost = await newPost.save();
+   // res.status(201).json(savedPost);
     console.log("Data saved successfully");
   } catch (error) {
     console.error("Error saving post:", error);
