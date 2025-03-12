@@ -1,4 +1,4 @@
-import express from "express";
+/*import express from "express";
 import cors from "cors";
 import connectDB from "../db.js";
 import User from "../../models/Accounts.js";
@@ -26,4 +26,4 @@ Account_creation.post("/", async (req, res) => {
   }
 
 });
-export default Account_creation;
+export default Account_creation;*/
