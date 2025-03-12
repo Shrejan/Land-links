@@ -1,4 +1,4 @@
-/*import mongoose from'mongoose';
+import mongoose from'mongoose';
 
 const postSchema = new mongoose.Schema({
   user_email : String,
@@ -19,4 +19,4 @@ const postSchema = new mongoose.Schema({
   }
 });
 
-export default  mongoose.model('Post', postSchema);*/
+export default  mongoose.model('Post', postSchema);
