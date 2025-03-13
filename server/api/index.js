@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
@@ -12,30 +12,27 @@ const app = express();
 const allowedOrigins = ["https://land-links.vercel.app"];
 
 // Configure CORS properly
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
-}));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
 //connectDB();
 
 // Middleware to parse JSON bodies
-app.use(express.json(/*{
-  verify: (req, res, buf) => {
-    req.rawBody = buf.toString();
-  },
-  limit: '50mb',
-  inflate: true,
-}*/));
-
+app.use(
+  express.json({
+    extended: true,
+  })
+);
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
 
 // Route to handle data
-app.post("/api/data", (req, res) => {
-  
-
+app.post("/api/data", async(req, res) => {
   try {
     const newPost = new Post({
       name: req.body.name,
@@ -48,8 +45,7 @@ app.post("/api/data", (req, res) => {
       g_map_url: req.body.mapLocation,*/
     });
     //const savedPost = await newPost.save();
-   // res.status(201).json(savedPost);
-    
+    // res.status(201).json(savedPost);
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
