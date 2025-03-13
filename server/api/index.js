@@ -33,8 +33,8 @@ app.use(express.json(/*{
 //app.use("/ac_creation/api/accounts", Account_creation);
 
 // Route to handle data
-app.post("/api/data", async (req, res) => {
-  console.log("Request received");
+app.post("/api/data", (req, res) => {
+  
 
   try {
     const newPost = new Post({
@@ -49,7 +49,7 @@ app.post("/api/data", async (req, res) => {
     });
     //const savedPost = await newPost.save();
    // res.status(201).json(savedPost);
-    console.log("Data saved successfully");
+    
   } catch (error) {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
