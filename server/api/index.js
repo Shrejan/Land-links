@@ -15,20 +15,18 @@ const allowedOrigins = ["https://land-links.vercel.app"];
 app.use(cors({
   origin: allowedOrigins,
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
 }));
 
 //connectDB();
 
 // Middleware to parse JSON bodies
-app.use(express.json({
+app.use(express.json(/*{
   verify: (req, res, buf) => {
     req.rawBody = buf.toString();
   },
   limit: '50mb',
   inflate: true,
-}));
+}*/));
 
 
 // Account creation route
