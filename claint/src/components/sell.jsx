@@ -5,16 +5,16 @@ import axios from "axios";
 
 const SellPage = () => {
   const [formData, setFormData] = useState({
-    mainLocation: "",
-    exactLocation: "",
-    price: "",
-    description: "",
-    images: [],
-    mapLocation: "",
+    //mainLocation: "",
+    //exactLocation: "",
+    //price: "",
+    //description: "",
+    //images: [],
+    //mapLocation: "",
     name: "",
-    contact1: "",
+    /*contact1: "",
     contact2: "",
-    user_id: "",
+    user_id: "",*/
   });
 
   const [imagePreviews, setImagePreviews] = useState([]);

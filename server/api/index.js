@@ -40,14 +40,14 @@ app.post("/api/data", async (req, res) => {
 
   try {
     const newPost = new Post({
-      full_name: req.body.name,
-      contact1: req.body.contact1,
+      name: req.body.name,
+      /*contact1: req.body.contact1,
       contact2: req.body.contact2,
       main_loca: req.body.mainLocation,
       exact_loca: req.body.exactLocation,
       price: req.body.price,
       discription: req.body.description,
-      g_map_url: req.body.mapLocation,
+      g_map_url: req.body.mapLocation,*/
     });
     //const savedPost = await newPost.save();
    // res.status(201).json(savedPost);
