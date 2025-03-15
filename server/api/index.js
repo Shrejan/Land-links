@@ -27,7 +27,6 @@ app.use(
     extended: true,
   })
 );
-console.log('Running on Vercel:', process.env.VERCEL);
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
@@ -35,7 +34,8 @@ app.post("/api/datass", async(req, res) => {
 res.send(console.log("ghvhv"))
 })
 // Route to handle data
-app.post("/api/data", async(req, res) => {
+app.post("/api/data", async(req, res) => {console.log('Running on Vercel:', process.env.VERCEL);
+
   try {
     const newPost = new Post({
       name: req.body.name,
@@ -60,4 +60,4 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });*/
 
-export default serverless(app);
+//export default serverless(app);
