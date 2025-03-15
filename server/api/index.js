@@ -30,7 +30,9 @@ app.use(
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
-
+app.post("/api/datass", async(req, res) => {
+res.send(console.log("ghvhv"))
+})
 // Route to handle data
 app.post("/api/data", async(req, res) => {
   try {
