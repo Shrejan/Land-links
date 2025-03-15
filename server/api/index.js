@@ -27,6 +27,7 @@ app.use(
     extended: true,
   })
 );
+console.log('Running on Vercel:', process.env.VERCEL);
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
