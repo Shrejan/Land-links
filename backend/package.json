@@ -4,7 +4,7 @@
   "main": "api/index.js",
   "type": "module",
   "scripts": {
-    "start": "node api/routes/index.js"
+    "start": "node backend/api/routes/index.js"
   },
   "author": "",
   "license": "ISC",
