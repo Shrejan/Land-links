@@ -1,5 +1,5 @@
 {
-    "name": "land_inks",
+    "name": "land_links",
     "version": "1.0.0",
     "main": "api/index.js", 
     "scripts": {

@@ -30,8 +30,8 @@ app.use(
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
-app.post("/api/datass", async(req, res) => {
-res.send(console.log("ghvhv"))
+app.get("/api/datass", async(req, res) => {
+res.send("ghvhv")
 })
 // Route to handle data
 app.post("/api/data", async(req, res) => {console.log('Running on Vercel:', process.env.VERCEL);
