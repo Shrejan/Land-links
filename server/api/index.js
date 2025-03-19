@@ -9,14 +9,14 @@ import cors from "cors";
 
 const app = express();
 
-const allowedOrigins = ["https://land-links.vercel.app/"];
+//const allowedOrigins = ["https://land-links.vercel.app/"];
 
 // Configure CORS properly
 app.use(
-  cors({
+  cors(/*{
     origin: allowedOrigins,
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
-  })
+  }*/)
 );
 
 //connectDB();
@@ -37,19 +37,19 @@ app.get('/', (req, res) => {
 //app.use("/ac_creation/api/accounts", Account_creation);
 
 // Route to handle data
-app.post("/data", async(req, res) => {
+/*app.post("/data", async(req, res) => {
   console.log('Running on Vercel:', process.env.VERCEL);
 
   try {
     const newPost = new Post({
       name: req.body.name,
-      /*contact1: req.body.contact1,
+      contact1: req.body.contact1,
       contact2: req.body.contact2,
       main_loca: req.body.mainLocation,
       exact_loca: req.body.exactLocation,
       price: req.body.price,
       discription: req.body.description,
-      g_map_url: req.body.mapLocation,*/
+      g_map_url: req.body.mapLocation,
     });
     //const savedPost = await newPost.save();
     // res.status(201).json(savedPost);
@@ -57,7 +57,7 @@ app.post("/data", async(req, res) => {
     console.error("Error saving post:", error);
     res.status(500).json({ message: error.message });
   }
-});
+});*/
 
 
 /*app.listen(5000, () => {
