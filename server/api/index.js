@@ -34,7 +34,8 @@ app.use(
 //app.use("/ac_creation/api/accounts", Account_creation);
 
 // Route to handle data
-app.post("/d/data", async(req, res) => {console.log('Running on Vercel:', process.env.VERCEL);
+app.post("/data", async(req, res) => {
+  console.log('Running on Vercel:', process.env.VERCEL);
 
   try {
     const newPost = new Post({
