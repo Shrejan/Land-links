@@ -9,7 +9,7 @@ import cors from "cors";
 
 const app = express();
 
-const allowedOrigins = ["https://land-links.vercel.app"];
+//const allowedOrigins = ["https://land-links.vercel.app"];
 
 // Configure CORS properly
 app.use(
@@ -56,8 +56,8 @@ app.post("/api/data", async(req, res) => {console.log('Running on Vercel:', proc
 });
 
 
-app.listen(5000, () => {
+/*app.listen(5000, () => {
   console.log(`Server running on port ${port}`);
-});
+});*/
 
 export default serverless(app);
