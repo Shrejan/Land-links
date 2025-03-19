@@ -9,7 +9,7 @@ import cors from "cors";
 
 const app = express();
 
-//const allowedOrigins = ["https://land-links.vercel.app"];
+const allowedOrigins = ["https://land-links.vercel.app"];
 
 // Configure CORS properly
 app.use(
