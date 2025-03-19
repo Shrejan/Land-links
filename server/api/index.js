@@ -9,7 +9,7 @@ import cors from "cors";
 
 const app = express();
 
-//const allowedOrigins = ["https://land-links.vercel.app"];
+const allowedOrigins = ["https://land-links.vercel.app"];
 
 // Configure CORS properly
 app.use(
@@ -24,7 +24,7 @@ app.use(
 // Middleware to parse JSON bodies
 app.use(
   express.json({
-    extended: true,
+    limit:"25mb"
   })
 );
 
@@ -55,9 +55,9 @@ app.post("/api/data", async(req, res) => {console.log('Running on Vercel:', proc
   }
 });
 
-/*const port = process.env.PORT || 5000;
-app.listen(port, () => {
+
+app.listen(5000, () => {
   console.log(`Server running on port ${port}`);
-});*/
+});
 
 export default serverless(app);
