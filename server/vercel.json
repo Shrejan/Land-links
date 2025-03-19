@@ -12,5 +12,10 @@
         "dest": "/api/index.js"
        
       }
-    ]
+    ],
+    "functions": {
+    "app/api/**/*": {
+      "maxDuration": 5 
+    }
+  }
   }
