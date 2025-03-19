@@ -28,6 +28,10 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
 app.get("/api/datass", async(req, res) => {
