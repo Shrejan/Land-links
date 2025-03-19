@@ -28,17 +28,13 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 // Account creation route
 //app.use("/ac_creation/api/accounts", Account_creation);
-app.get("/datass", async(req, res) => {
-res.send("ghvhv")
-})
+
 // Route to handle data
-app.post("/data", async(req, res) => {console.log('Running on Vercel:', process.env.VERCEL);
+app.post("/d/data", async(req, res) => {console.log('Running on Vercel:', process.env.VERCEL);
 
   try {
     const newPost = new Post({
