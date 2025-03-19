@@ -27,6 +27,9 @@ app.use(
     limit:"25mb"
   })
 );
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 
 
