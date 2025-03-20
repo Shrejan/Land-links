@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import serverless from "serverless-https";
+import serverless from "serverless-http";
 import express from "express";
 import cors from "cors";
 //import connectDB from "../api/db.js";
