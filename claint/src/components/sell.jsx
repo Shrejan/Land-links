@@ -54,7 +54,7 @@ const SellPage = () => {
 
     try {
       const response = await axios.post(
-        "https://land-links-backend.vercel.app/api/data",
+        "https://practice-seven-roan.vercel.app/data",
         formData,
        /* {
           headers: {
