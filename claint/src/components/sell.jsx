@@ -5,16 +5,16 @@ import axios from "axios";
 
 const SellPage = () => {
   const [formData, setFormData] = useState({
-    //mainLocation: "",
-    //exactLocation: "",
-    //price: "",
-    //description: "",
-    //images: [],
-    //mapLocation: "",
+    mainLocation: "",
+    exactLocation: "",
+    price: "",
+    description: "",
+    images: [],
+    mapLocation: "",
     name: "",
-    /*contact1: "",
+    contact1: "",
     contact2: "",
-    user_id: "",*/
+    user_id: "",
   });
 
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -56,16 +56,12 @@ const SellPage = () => {
       const response = await axios.post(
         "https://practice-seven-roan.vercel.app/data",
         formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        
       );
       alert("Data submitted successfully!");
       window.location.reload();
     } catch (error) {
-      console.error("Errrrrrrrror:", error.response?.data || error.message);
+      console.error("Error:", error.response?.data || error.message);
 
       // Handle error
     }
