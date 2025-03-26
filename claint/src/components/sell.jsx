@@ -56,11 +56,11 @@ const SellPage = () => {
       const response = await axios.post(
         "https://practice-seven-roan.vercel.app/data",
         formData,
-       /* {
+        {
           headers: {
             "Content-Type": "application/json",
           },
-        }*/
+        }
       );
       alert("Data submitted successfully!");
       window.location.reload();
